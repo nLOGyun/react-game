@@ -1,0 +1,14 @@
+#components-layout-demo-fixed .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+    background: #fff;
+}
+.main_footer{
+    padding: 5px 0!important;
+    text-align: center;
+}
