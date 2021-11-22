@@ -13,6 +13,8 @@
 # production
 /build
 
+/test.sqlite
+
 # misc
 .DS_Store
 .env.local

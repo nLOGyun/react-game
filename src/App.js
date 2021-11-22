@@ -1,4 +1,4 @@
-import GameMain from "./pages/gameMain";
+import GameMain from "./pages/saoLei/gameMain";
 
 function App() {
   return (

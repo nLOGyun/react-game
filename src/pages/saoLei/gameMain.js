@@ -1,7 +1,8 @@
 import React from "react";
 import { Layout } from 'antd';
-import SaoLei from "./saoLei/main";
-import '../style/index.css';
+import SaoLei from "./main";
+import '../../style/index.css';
+import {getLocalStorage} from "../../method/localStorage";
 
 const { Header, Content, Footer } = Layout;
 
@@ -11,12 +12,18 @@ export default class GameMain extends React.Component{
         this.state = {
             minHeight: 0,
             text: 'Hello',
-            count: 0
+            count: 0,
+            username: ''
         };
     }
     componentDidMount() {
         let minHeight = document.body.offsetHeight;
-        this.setState( { minHeight: minHeight } )
+        let username = getLocalStorage('username')
+        if (!username) {
+            this.props.history.push('/login')
+        } else {
+            this.setState( { minHeight: minHeight, username } )
+        }
     }
     changeText(){
         let { count } = this.state;
@@ -41,11 +48,11 @@ export default class GameMain extends React.Component{
     }
 
     render() {
-        let { minHeight, text, count } = this.state;
+        let { minHeight, text, count, username } = this.state;
         return(
             <Layout>
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%', height: '40px', display: 'flex', alignItems: 'center' }}>
-                    <div style={{ color: '#fff', height: '40px', lineHeight: '40px' }} onClick={() => this.changeText()}>{text}</div>
+                    <div style={{ color: '#fff', height: '40px', lineHeight: '40px' }} onClick={() => this.changeText()}>{text}{username}</div>
                     {
                         count > 5 && <div style={{ color: '#fff', marginLeft: '20px', fontSize: '12px' }}> 你可真无聊啊.. </div>
                     }

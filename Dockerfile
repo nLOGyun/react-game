@@ -3,7 +3,6 @@ FROM node:15-alpine
 # 工作目录
 WORKDIR /create-react-app
 # 添加所有文件到create-react-app目录
-ADD package.json package-lock.json /create-react-app
 ADD . /create-react-app
 # 执行命令
 RUN npm install && npm run build && npm install -g http-server
